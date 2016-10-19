@@ -1,0 +1,100 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Clinical Trial
+
+An API allowing consumers to view information on clinical trials as well as create new trials.
+
+## Trials [/trials]
+
+### List All Trials [GET]
++ Request
+
+    + Headers
+    
+            tenant-id: 1 (number) - Requester's tenant-id
+            api-key: f3ae03ca-0937-4510-be76-775d6ada45e2 (number) 
+
++ Response 200 (application/json)
+
+        [
+            {
+                "trial_id": "4859634",
+                "description": Zika vaccine immunogenicity study",
+                "phase": "Early"
+            }, {
+                "trial_id": "6859656",
+                "description": "Neurology study",
+                "phase": "Phase II"
+            }, {
+                "trial_id": "8859678",
+                "description": "psychiatry study",
+                "phase": "Late Phase"
+            }
+        ]
+        
+## Trial [/trial/{trial_id}]
+
+### Get a Trial [GET]
+Returns the details for the provided trial id.
+
++ Parameters
+    + trial_id: 4859634 (number) - Trial id
+
++ Request
+
+    + Headers
+    
+            tenant-id: 1 (number) - Requester's tenant-id
+            api-key: f3ae03ca-0937-4510-be76-775d6ada45e2 (number) 
+
++ Response 200 (application/json)
+
+        {
+            "trial_id": "8859678",
+            "description": "psychiatry study",
+            "phase": "Late Phase",
+            "location": "Raleigh",
+            "abuse_potential": "High",
+            "volunteer_count": 24
+        }
+
+### Create a New Trial [POST]
+
+You may create your own trial using this action. It takes a JSON
+object containing the trial details.
+
++ Request (application/json)
+
+    + Headers
+    
+            tenant-id: 1 (number) - Requester's tenant-id
+            api-key: f3ae03ca-0937-4510-be76-775d6ada45e2 (number)
+            
+    + Body
+
+            {
+                "trial_id": "6859656",
+                "description": "Neurology study",
+                "phase": "Phase II"
+                "location": "Durham",
+                "abuse_potential": "Low",
+                "volunteer_count": 92
+            }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /trials/6859656
+
+    + Body
+
+            {
+                "trial_id": "6859656",
+                "description": "Neurology study",
+                "phase": "Phase II"
+                "location": "Durham",
+                "abuse_potential": "Low",
+                "volunteer_count": 92
+            }
