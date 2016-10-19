@@ -20,7 +20,7 @@ An API allowing consumers to view information on clinical trials as well as crea
         [
             {
                 "trial_id": "4859634",
-                "description": Zika vaccine immunogenicity study",
+                "description": "Zika vaccine immunogenicity study",
                 "phase": "Early"
             }, {
                 "trial_id": "6859656",
@@ -33,32 +33,6 @@ An API allowing consumers to view information on clinical trials as well as crea
             }
         ]
         
-## Trial [/trial/{trial_id}]
-
-### Get a Trial [GET]
-Returns the details for the provided trial id.
-
-+ Parameters
-    + trial_id: 4859634 (number) - Trial id
-
-+ Request
-
-    + Headers
-    
-            tenant-id: 1 (number) - Requester's tenant-id
-            api-key: f3ae03ca-0937-4510-be76-775d6ada45e2 (number) 
-
-+ Response 200 (application/json)
-
-        {
-            "trial_id": "8859678",
-            "description": "psychiatry study",
-            "phase": "Late Phase",
-            "location": "Raleigh",
-            "abuse_potential": "High",
-            "volunteer_count": 24
-        }
-
 ### Create a New Trial [POST]
 
 You may create your own trial using this action. It takes a JSON
@@ -98,3 +72,29 @@ object containing the trial details.
                 "abuse_potential": "Low",
                 "volunteer_count": 92
             }
+
+## Trial [/trials/{trial_id}]
+
+### Get a Trial [GET]
+Returns the details for the provided trial id.
+
++ Parameters
+    + trial_id: 4859634 (number) - Trial id
+
++ Request
+
+    + Headers
+    
+            tenant-id: 1 (number) - Requester's tenant-id
+            api-key: f3ae03ca-0937-4510-be76-775d6ada45e2 (number) 
+
++ Response 200 (application/json)
+
+        {
+            "trial_id": "8859678",
+            "description": "psychiatry study",
+            "phase": "Late Phase",
+            "location": "Raleigh",
+            "abuse_potential": "High",
+            "volunteer_count": 24
+        }
